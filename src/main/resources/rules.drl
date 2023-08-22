@@ -1,0 +1,11 @@
+package de.comline;
+
+import de.comline.Alarm;
+import java.util.HashSet;
+
+rule "collect-from-example"
+when
+	$alarms: HashSet() from collect(Alarm(status == "pending"))
+then
+	Alarm.raisePriority($alarms);
+end
